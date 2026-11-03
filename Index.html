@@ -10,7 +10,7 @@
 </head>
 <body class="bg-[#0b0c10] text-gray-200 font-sans min-h-screen flex flex-col">
 
-  <!-- Навигация -->
+  <!-- Шапка сайта -->
   <header class="sticky top-0 z-40 bg-[#0b0c10]/90 backdrop-blur-md border-b border-gray-800">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="showTab('main')">
@@ -41,12 +41,9 @@
     </div>
   </header>
 
-  <!-- Контент страниц -->
   <main class="flex-grow">
-    
-    <!-- СЕКЦИЯ 1: ГЛАВНАЯ -->
+    <!-- Главная -->
     <section id="tab-main" class="tab-content">
-      <!-- Баннер -->
       <div class="relative py-20 px-4 bg-gradient-to-b from-[#14161f] to-[#0b0c10] border-b border-gray-800 text-center">
         <span class="inline-block px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full text-xs uppercase tracking-widest mb-4">100% удаление навсегда • СанПиН</span>
         <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-4">
@@ -61,11 +58,11 @@
         </div>
       </div>
 
-      <!-- Интерактивный калькулятор -->
+      <!-- Калькулятор сеанса -->
       <div id="calc-section" class="max-w-4xl mx-auto px-4 py-16">
         <div class="bg-[#14161f] p-8 rounded-2xl border border-gray-800 shadow-xl">
           <h2 class="text-2xl font-bold text-white mb-2 text-center">Калькулятор стоимости сеанса</h2>
-          <p class="text-gray-400 text-sm text-center mb-6">Оплата в студии производится поминутно. Выберите зону и желаемую длительность.</p>
+          <p class="text-gray-400 text-sm text-center mb-6">Оплата в студии поминутная. Выберите зону и желаемую длительность.</p>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
@@ -97,11 +94,11 @@
       </div>
     </section>
 
-    <!-- СЕКЦИЯ 2: ПОРТФОЛИО ДО/ПОСЛЕ -->
+    <!-- Портфолио (До/После) -->
     <section id="tab-portfolio" class="tab-content hidden py-16 px-4 max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-extrabold text-white mb-2">Клинические результаты</h2>
-        <p class="text-gray-400">Потяните ползунок в центре, чтобы сравнить состояние кожи до курса и после</p>
+        <p class="text-gray-400">Сдвигайте ползунок для сравнения состояния кожи до и после курса</p>
       </div>
 
       <div class="max-w-2xl mx-auto bg-[#14161f] border border-gray-800 rounded-2xl p-6 shadow-2xl">
@@ -110,7 +107,7 @@
           <div id="slider-overlay" class="absolute inset-0 w-1/2 overflow-hidden border-r-2 border-amber-400 bg-black">
             <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="До сеанса" class="absolute inset-0 w-[600px] max-w-none h-full object-cover">
           </div>
-          <span class="absolute top-4 left-4 bg-black/60 text-xs text-white px-2 py-1 rounded">ДО (3 сеанса)</span>
+          <span class="absolute top-4 left-4 bg-black/70 text-xs text-white px-2 py-1 rounded">ДО (3 сеанса)</span>
           <span class="absolute top-4 right-4 bg-amber-500 text-xs text-black font-bold px-2 py-1 rounded">ПОСЛЕ (Финал)</span>
           <input type="range" min="0" max="100" value="50" id="slider-range" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize">
         </div>
@@ -121,18 +118,17 @@
       </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: ОТЗЫВЫ -->
+    <!-- Отзывы -->
     <section id="tab-reviews" class="tab-content hidden py-16 px-4 max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-extrabold text-white mb-2">Отзывы клиентов</h2>
-        <p class="text-gray-400">Реальные впечатления наших гостей о безболезненности и результате</p>
+        <p class="text-gray-400">Впечатления гостей студии о процедуре и результатах</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12" id="reviews-container"></div>
 
-      <!-- Форма добавления отзыва -->
       <div class="max-w-xl mx-auto bg-[#14161f] border border-gray-800 rounded-xl p-6">
-        <h3 class="text-lg font-bold text-white mb-4">Оставить свой отзыв</h3>
+        <h3 class="text-lg font-bold text-white mb-4">Оставить отзыв</h3>
         <form id="review-form" class="space-y-4">
           <input type="text" id="rev-name" placeholder="Ваше имя" required class="w-full bg-[#0b0c10] border border-gray-700 rounded-lg p-3 text-white text-sm">
           <select id="rev-zone" class="w-full bg-[#0b0c10] border border-gray-700 rounded-lg p-3 text-white text-sm">
@@ -147,20 +143,20 @@
       </div>
     </section>
 
-    <!-- СЕКЦИЯ 4: НОВОСТИ -->
+    <!-- Новости -->
     <section id="tab-news" class="tab-content hidden py-16 px-4 max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-extrabold text-white mb-2">Новости и База знаний</h2>
-        <p class="text-gray-400">Экспертные статьи о подготовке к сеансу и уходе за кожей</p>
+        <p class="text-gray-400">Экспертные материалы о правильной подготовке и уходе за кожей</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="news-container"></div>
     </section>
 
-    <!-- СЕКЦИЯ 5: МАГАЗИН И ТОВАРЫ -->
+    <!-- Магазин товаров -->
     <section id="tab-shop" class="tab-content hidden py-16 px-4 max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-extrabold text-white mb-2">Профильный домашний уход</h2>
-        <p class="text-gray-400">Профессиональные средства регенерации и подготовки кожи к электроэпиляции</p>
+        <p class="text-gray-400">Профессиональные средства регенерации и подготовки кожи к сеансам</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="products-container"></div>
     </section>
