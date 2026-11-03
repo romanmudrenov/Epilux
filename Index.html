@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EPILUX Moscow | Студия профессиональной электроэпиляции</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0b0c10] text-gray-200 font-sans min-h-screen flex flex-col">
+
+  <!-- Навигация -->
+  <header class="sticky top-0 z-40 bg-[#0b0c10]/90 backdrop-blur-md border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="showTab('main')">
+        <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-200 flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-amber-500/20">E</span>
+        <div>
+          <span class="text-xl font-bold tracking-wider text-white">EPILUX</span>
+          <span class="block text-[10px] text-amber-400 tracking-widest uppercase">Moscow • Арбат</span>
+        </div>
+      </div>
+      
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <button onclick="showTab('main')" class="nav-link hover:text-amber-400 transition">Главная</button>
+        <button onclick="showTab('portfolio')" class="nav-link hover:text-amber-400 transition">До/После</button>
+        <button onclick="showTab('reviews')" class="nav-link hover:text-amber-400 transition">Отзывы</button>
+        <button onclick="showTab('news')" class="nav-link hover:text-amber-400 transition">Новости</button>
+        <button onclick="showTab('shop')" class="nav-link hover:text-amber-400 transition">Магазин</button>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <button onclick="openCart()" class="relative p-2 text-gray-300 hover:text-amber-400 transition">
+          <i class="fa-solid fa-bag-shopping text-xl"></i>
+          <span id="cart-counter" class="absolute -top-1 -right-1 bg-amber-500 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+        <button onclick="showTab('main'); document.getElementById('calc-section').scrollIntoView();" class="hidden sm:inline-block bg-amber-500 hover:bg-amber-400 text-black font-semibold px-4 py-2 rounded-lg text-sm transition">
+          Запись на сеанс
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Контент страниц -->
+  <main class="flex-grow">
+    
+    <!-- СЕКЦИЯ 1: ГЛАВНАЯ -->
+    <section id="tab-main" class="tab-content">
+      <!-- Баннер -->
+      <div class="relative py-20 px-4 bg-gradient-to-b from-[#14161f] to-[#0b0c10] border-b border-gray-800 text-center">
+        <span class="inline-block px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full text-xs uppercase tracking-widest mb-4">100% удаление навсегда • СанПиН</span>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-4">
+          Гладкость навсегда на канадских <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-200">Apilus xCell Pro</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-gray-400 text-base md:text-lg mb-8">
+          Единственный научно доказанный метод удаления волос любого цвета и на любой коже. Без вросших волос и пигментации.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <button onclick="document.getElementById('calc-section').scrollIntoView();" class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-xl transition">Рассчитать сеанс</button>
+          <button onclick="showTab('portfolio')" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-xl border border-gray-700 transition">Смотреть результаты</button>
+        </div>
+      </div>
+
+      <!-- Интерактивный калькулятор -->
+      <div id="calc-section" class="max-w-4xl mx-auto px-4 py-16">
+        <div class="bg-[#14161f] p-8 rounded-2xl border border-gray-800 shadow-xl">
+          <h2 class="text-2xl font-bold text-white mb-2 text-center">Калькулятор стоимости сеанса</h2>
+          <p class="text-gray-400 text-sm text-center mb-6">Оплата в студии производится поминутно. Выберите зону и желаемую длительность.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-300 mb-2">Выберите зону обработки:</label>
+              <select id="calc-zone" class="w-full bg-[#0b0c10] border border-gray-700 rounded-lg p-3 text-white">
+                <option value="45">Лицо / Брови / Верхняя губа (45 ₽/мин)</option>
+                <option value="40">Подмышечные впадины (40 ₽/мин)</option>
+                <option value="42">Глубокое бикини (42 ₽/мин)</option>
+                <option value="38">Голени / Бедра / Руки (38 ₽/мин)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-300 mb-2">Длительность первого сеанса: <span id="calc-minutes-val" class="text-amber-400 font-bold">60 мин</span></label>
+              <input type="range" id="calc-minutes" min="15" max="180" step="15" value="60" class="w-full accent-amber-500 mt-2">
+            </div>
+          </div>
+
+          <div class="p-4 bg-[#0b0c10] rounded-xl flex items-center justify-between border border-gray-800">
+            <div>
+              <span class="text-xs text-gray-500 uppercase tracking-wider block">Ориентировочная стоимость</span>
+              <span id="calc-total" class="text-2xl font-black text-amber-400">2 400 ₽</span>
+              <span class="text-xs text-gray-400 ml-2">(включая одноразовый изолированный зонд)</span>
+            </div>
+            <button onclick="toggleBot(true); sendQuickMessage('Хочу записаться на электроэпиляцию');" class="bg-amber-500 hover:bg-amber-400 text-black px-5 py-2.5 rounded-lg font-bold text-sm transition">
+              Быстрая запись
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 2: ПОРТФОЛИО ДО/ПОСЛЕ -->
+    <section id="tab-portfolio" class="tab-content hidden py-16 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-white mb-2">Клинические результаты</h2>
+        <p class="text-gray-400">Потяните ползунок в центре, чтобы сравнить состояние кожи до курса и после</p>
+      </div>
+
+      <div class="max-w-2xl mx-auto bg-[#14161f] border border-gray-800 rounded-2xl p-6 shadow-2xl">
+        <div class="relative w-full h-80 rounded-xl overflow-hidden select-none" id="slider-box">
+          <img src="https://images.unsplash.com/photo-1512290900672-1f4864459f03?auto=format&fit=crop&w=800&q=80" alt="После сеанса" class="absolute inset-0 w-full h-full object-cover">
+          <div id="slider-overlay" class="absolute inset-0 w-1/2 overflow-hidden border-r-2 border-amber-400 bg-black">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="До сеанса" class="absolute inset-0 w-[600px] max-w-none h-full object-cover">
+          </div>
+          <span class="absolute top-4 left-4 bg-black/60 text-xs text-white px-2 py-1 rounded">ДО (3 сеанса)</span>
+          <span class="absolute top-4 right-4 bg-amber-500 text-xs text-black font-bold px-2 py-1 rounded">ПОСЛЕ (Финал)</span>
+          <input type="range" min="0" max="100" value="50" id="slider-range" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize">
+        </div>
+        <div class="mt-4 flex justify-between text-sm text-gray-400">
+          <span>Зона: Голени (курс 9 месяцев)</span>
+          <span class="text-amber-400">Аппарат: Apilus Flash</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 3: ОТЗЫВЫ -->
+    <section id="tab-reviews" class="tab-content hidden py-16 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-white mb-2">Отзывы клиентов</h2>
+        <p class="text-gray-400">Реальные впечатления наших гостей о безболезненности и результате</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12" id="reviews-container"></div>
+
+      <!-- Форма добавления отзыва -->
+      <div class="max-w-xl mx-auto bg-[#14161f] border border-gray-800 rounded-xl p-6">
+        <h3 class="text-lg font-bold text-white mb-4">Оставить свой отзыв</h3>
+        <form id="review-form" class="space-y-4">
+          <input type="text" id="rev-name" placeholder="Ваше имя" required class="w-full bg-[#0b0c10] border border-gray-700 rounded-lg p-3 text-white text-sm">
+          <select id="rev-zone" class="w-full bg-[#0b0c10] border border-gray-700 rounded-lg p-3 text-white text-sm">
+            <option>Зона: Лицо и брови</option>
+            <option>Зона: Подмышки</option>
+            <option>Зона: Бикини</option>
+            <option>Зона: Ноги</option>
+          </select>
+          <textarea id="rev-text" placeholder="Ваш отзыв..." required rows="3" class="w-full bg-[#0b0c10] border border-gray-700 rounded-lg p-3 text-white text-sm"></textarea>
+          <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-2.5 rounded-lg text-sm transition">Опубликовать отзыв</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 4: НОВОСТИ -->
+    <section id="tab-news" class="tab-content hidden py-16 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-white mb-2">Новости и База знаний</h2>
+        <p class="text-gray-400">Экспертные статьи о подготовке к сеансу и уходе за кожей</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="news-container"></div>
+    </section>
+
+    <!-- СЕКЦИЯ 5: МАГАЗИН И ТОВАРЫ -->
+    <section id="tab-shop" class="tab-content hidden py-16 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-white mb-2">Профильный домашний уход</h2>
+        <p class="text-gray-400">Профессиональные средства регенерации и подготовки кожи к электроэпиляции</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="products-container"></div>
+    </section>
+  </main>
+
+  <!-- Модальное окно корзины -->
+  <div id="cart-modal" class="fixed inset-0 z-50 bg-black/80 flex justify-end hidden">
+    <div class="w-full max-w-md bg-[#14161f] h-full p-6 flex flex-col justify-between border-l border-gray-800">
+      <div>
+        <div class="flex justify-between items-center pb-4 border-b border-gray-800">
+          <h3 class="text-lg font-bold text-white">Корзина товаров</h3>
+          <button onclick="closeCart()" class="text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="cart-items" class="py-4 space-y-4 max-h-[60vh] overflow-y-auto"></div>
+      </div>
+      <div class="border-t border-gray-800 pt-4">
+        <div class="flex justify-between text-lg font-bold text-white mb-4">
+          <span>Итого:</span>
+          <span id="cart-total-price" class="text-amber-400">0 ₽</span>
+        </div>
+        <button onclick="checkoutOrder()" class="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-3 rounded-xl transition">Оформить заказ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Чат-бот ассистент -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button id="bot-toggle-btn" onclick="toggleBot()" class="w-14 h-14 bg-amber-500 hover:bg-amber-400 text-black rounded-full shadow-lg flex items-center justify-center text-2xl transition">
+      <i class="fa-solid fa-comments"></i>
+    </button>
+    <div id="bot-window" class="hidden absolute bottom-16 right-0 w-80 sm:w-96 bg-[#14161f] border border-gray-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+      <div class="bg-[#1a1d28] p-4 flex justify-between items-center border-b border-gray-800">
+        <div class="flex items-center space-x-2">
+          <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse"></span>
+          <span class="font-bold text-sm text-white">EPILUX Ассистент</span>
+        </div>
+        <button onclick="toggleBot(false)" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="bot-messages" class="p-4 h-64 overflow-y-auto space-y-3 text-xs"></div>
+      <div class="p-2 border-t border-gray-800 bg-[#0b0c10] flex gap-2 overflow-x-auto">
+        <button onclick="sendQuickMessage('Больно ли делать?')" class="bg-gray-800 text-gray-300 px-2 py-1 rounded text-[11px] whitespace-nowrap hover:bg-gray-700">Больно ли?</button>
+        <button onclick="sendQuickMessage('Противопоказания')" class="bg-gray-800 text-gray-300 px-2 py-1 rounded text-[11px] whitespace-nowrap hover:bg-gray-700">Противопоказания</button>
+        <button onclick="sendQuickMessage('Как подготовиться?')" class="bg-gray-800 text-gray-300 px-2 py-1 rounded text-[11px] whitespace-nowrap hover:bg-gray-700">Подготовка</button>
+      </div>
+      <div class="p-3 border-t border-gray-800 flex gap-2">
+        <input type="text" id="bot-input" placeholder="Напишите вопрос..." class="flex-grow bg-[#0b0c10] border border-gray-700 rounded-lg px-3 py-1.5 text-xs text-white">
+        <button onclick="sendBotMessage()" class="bg-amber-500 text-black px-3 rounded-lg text-xs font-bold hover:bg-amber-400"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-[#08090c] border-t border-gray-800 py-8 text-center text-xs text-gray-500">
+    <p>© 2026 Студия электроэпиляции EPILUX Moscow. Все права защищены.</p>
+    <p class="mt-1">Москва, ул. Новый Арбат, 21 • Ежедневно с 10:00 до 22:00</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="bot.js"></script>
+</body>
+</html>
