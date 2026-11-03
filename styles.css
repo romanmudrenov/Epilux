@@ -1,4 +1,4 @@
-/* Пользовательские стили и анимации */
+/* Прокрутка */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -16,6 +16,7 @@
   background: #d97706;
 }
 
+/* Анимация переключения вкладок */
 .tab-content {
   animation: fadeIn 0.25s ease-in-out;
 }
@@ -31,7 +32,7 @@
   }
 }
 
-/* Стили ползунка сравнения до/после */
+/* Ползунок До/После */
 #slider-box input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 4px;
