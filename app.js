@@ -1,4 +1,4 @@
-// --- Переключение страниц (вкладок) ---
+// Переключение разделов
 function showTab(tabName) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
   const activeTab = document.getElementById(`tab-${tabName}`);
@@ -8,7 +8,7 @@ function showTab(tabName) {
   }
 }
 
-// --- Калькулятор сеанса ---
+// Калькулятор
 const zoneSelect = document.getElementById('calc-zone');
 const minutesInput = document.getElementById('calc-minutes');
 const minutesVal = document.getElementById('calc-minutes-val');
@@ -27,7 +27,7 @@ if (zoneSelect && minutesInput) {
   minutesInput.addEventListener('input', updateCalc);
 }
 
-// --- Интерактивный слайдер До/После ---
+// Слайдер сравнения
 const sliderRange = document.getElementById('slider-range');
 const sliderOverlay = document.getElementById('slider-overlay');
 
@@ -37,7 +37,7 @@ if (sliderRange && sliderOverlay) {
   });
 }
 
-// --- Магазин и корзина ---
+// Товары и корзина
 const products = [
   { id: 1, name: 'Крем регенерирующий Цикапласт B5+', price: 1850, img: 'https://images.unsplash.com/photo-1608248597359-5033c5e8c45f?auto=format&fit=crop&w=400&q=80' },
   { id: 2, name: 'Гель охлаждающий с алоэ вера 99%', price: 950, img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80' },
@@ -67,8 +67,10 @@ function renderProducts() {
 
 function addToCart(id) {
   const item = products.find(p => p.id === id);
-  cart.push(item);
-  saveCart();
+  if (item) {
+    cart.push(item);
+    saveCart();
+  }
 }
 
 function saveCart() {
@@ -131,7 +133,7 @@ function checkoutOrder() {
   closeCart();
 }
 
-// --- Отзывы (LocalStorage) ---
+// Отзывы
 const defaultReviews = [
   { name: 'Алина К.', zone: 'Зона: Подмышки', text: 'За 5 сеансов ушло 90% волос. Аппарат Apilus действительно мягче старых моделей!' },
   { name: 'Екатерина В.', zone: 'Зона: Лицо и брови', text: 'Убирали пушок над верхней губой. Следов и ожогов нет, идеальная гладкость.' }
@@ -169,7 +171,7 @@ if (reviewForm) {
   });
 }
 
-// --- Новости ---
+// Новости
 const newsData = [
   { title: 'Как подготовить кожу к первому сеансу', date: '28 Октября 2026', desc: 'Длина волосков должна составлять от 3 до 4 мм. Рекомендуется обильное питье за сутки до процедуры для гидратации фолликула.' },
   { title: 'Сравнение методов: Термолиз vs Flash 27 МГц', date: '15 Октября 2026', desc: 'Почему сверхбыстрый импульс частотой 27.12 МГц снижает болевые ощущения в 3 раза по сравнению с классическим термолизом.' }
@@ -187,7 +189,6 @@ function renderNews() {
   `).join('');
 }
 
-// Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   renderReviews();
