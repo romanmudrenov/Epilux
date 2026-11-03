@@ -1,0 +1,40 @@
+/* Пользовательские стили и анимации */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0c10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232733;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
+
+.tab-content {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Стили ползунка сравнения до/после */
+#slider-box input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 4px;
+  height: 100%;
+  cursor: ew-resize;
+}
